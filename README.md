@@ -76,6 +76,43 @@ php artisan serve
 
 ---
 
+### Database Schema
+
+1. users Table
+- id
+- name
+- email
+- password
+- remember_token
+- timestamps
+
+2. roles Table
+- id
+- name (e.g., Author, Collaborator)
+- timestamps
+
+3. books Table
+- id
+- title
+- description (nullable)
+- user_id (the author of the book)
+- timestamps
+
+4. sections Table
+- id
+- book_id
+- parent_id (nullable, self-referencing to allow for infinite nesting)
+- title
+- content (long text field for the actual section text)
+- timestamps
+
+5. book_user (Pivot Table for Collaboration)
+- id
+- book_id
+- user_id
+- role_id (indicates if the user is an Author or a Collaborator for this specific book)
+- timestamps
+
 ## Usage (API Endpoints)
 
 All routes typically use Sanctum authentication (`auth:sanctum`).
