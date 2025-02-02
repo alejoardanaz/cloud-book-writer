@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Gate;
 
 class SectionController extends Controller
 {
+    /**
+     * Store a newly created section in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $bookId
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request, $bookId)
     {
         $request->validate([
@@ -29,6 +36,12 @@ class SectionController extends Controller
         ]);
     }
 
+    /**
+     * Display the specified section.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $section = Section::findOrFail($id);
@@ -38,6 +51,13 @@ class SectionController extends Controller
         return $section;
     }
 
+    /**
+     * Update the specified section.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $section = Section::findOrFail($id);
@@ -59,6 +79,12 @@ class SectionController extends Controller
         return $section;
     }
 
+    /**
+     * Remove the specified section from storage.
+     *
+     * @param  int  $id  The ID of the section to be removed.
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $section = Section::findOrFail($id);

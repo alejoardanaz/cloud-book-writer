@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
 {
+    /**
+     * Display a listing of the books.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $userId = $request->user()->id;
@@ -21,6 +27,12 @@ class BookController extends Controller
         });
     }
 
+    /**
+     * Store a newly created book in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -39,6 +51,12 @@ class BookController extends Controller
         return $book;
     }
 
+    /**
+     * Display the specified book.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $book = Book::findOrFail($id);
@@ -48,6 +66,13 @@ class BookController extends Controller
         return $book;
     }
 
+    /**
+     * Update the specified book in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -69,6 +94,12 @@ class BookController extends Controller
         return $book;
     }
 
+    /**
+     * Remove the specified book from storage.
+     *
+     * @param  int  $id  The ID of the book to be deleted.
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $book = Book::findOrFail($id);
@@ -84,6 +115,13 @@ class BookController extends Controller
         ]);
     }
 
+    /**
+     * Invite a collaborator to a book.
+     *
+     * @param \Illuminate\Http\Request $request The HTTP request instance.
+     * @param int $id The ID of the book to which the collaborator is being invited.
+     * @return \Illuminate\Http\Response
+     */
     public function inviteCollaborator(Request $request, $id)
     {
         $request->validate([
@@ -113,6 +151,13 @@ class BookController extends Controller
         ]);
     }
 
+    /**
+     * Remove a collaborator from the book.
+     *
+     * @param \Illuminate\Http\Request $request The request instance.
+     * @param int $id The ID of the collaborator to be removed.
+     * @return \Illuminate\Http\Response
+     */
     public function removeCollaborator(Request $request, $id)
     {
         $request->validate([

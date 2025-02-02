@@ -16,9 +16,9 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(), // Crea un usuario si no existe
-            'title' => $this->faker->sentence(4), // Genera un título aleatorio
-            'description' => $this->faker->paragraph(3), // Genera una descripción aleatoria
+            'user_id' => User::factory(),
+            'title' => $this->faker->sentence(4),
+            'description' => $this->faker->paragraph(3),
         ];
     }
 }
